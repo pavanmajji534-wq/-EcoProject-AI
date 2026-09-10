@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoProject AI - 7 Slide Executive Presentation</title>
+
+  <!-- 
+    ==========================================================================
+    ECOPROJECT AI - 7 SLIDE PRESENTATION DECK
+    ==========================================================================
+    Slide 1: Problem Statement & Context
+    Slide 2: Objectives
+    Slide 3: Methodology
+    Slide 4: Technology
+    Slide 5: Innovation
+    Slide 6: SDG Alignment
+    Slide 7: Expected Impact
+    ==========================================================================
+  -->
+
+  <style>
+    :root {
+      --primary: #176b3a;
+      --primary-dark: #0f4d28;
+      --primary-light: #e8f7ed;
+      --accent: #27ae60;
+      --text-dark: #122217;
+      --text-muted: #55665a;
+      --bg-slide: #ffffff;
+      --bg-page: #0d1a12;
+      --border: #dce7e0;
+      --danger: #c0392b;
+      --danger-bg: #fdf4f4;
+      --success-bg: #f1f9f4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* ================= PRESENTATION STAGE ================= */
+    .deck-container {
+      width: 100%;
+      max-width: 1120px;
+      aspect-ratio: 16 / 9;
+      background: var(--bg-slide);
+      border-radius: 20px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      display: none;
+      flex: 1;
+      padding: 48px 65px 35px;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: slideFadeIn 0.3s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes slideFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Slide Header */
+    .slide-header {
+      margin-bottom: 16px;
+    }
+
+    .slide-badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .slide-subtitle {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Slide Content Bodies */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    /* Cards */
+    .card {
+      background: #f8fbf9;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    .card h3 {
+      font-size: 15.5px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .card li {
+      font-size: 12.5px;
+      color: #334438;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .card li::before {
+      content: '✔';
+      color: var(--accent);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Comparison Box */
+    .comp-box-danger {
+      border-left: 4px solid var(--danger);
+      background: var(--danger-bg);
+    }
+    .comp-box-danger h3 { color: var(--danger); }
+    .comp-box-danger li::before {
+      content: '✖';
+      color: var(--danger);
+    }
+
+    .comp-box-success {
+      border-left: 4px solid var(--accent);
+      background: var(--success-bg);
+    }
+    .comp-box-success h3 { color: var(--primary); }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid #edf2ee;
+      font-size: 11.5px;
+      color: #7b8d81;
+    }
+
+    /* Navigation Bar */
+    .controls-bar {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1120px;
+      color: #9eb5a6;
+      font-size: 14px;
+    }
+
+    .control-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .controls-bar {
+        display: none !important;
+      }
+      .deck-container {
+        box-shadow: none;
+        max-width: 100%;
+        border-radius: 0;
+        aspect-ratio: auto;
+      }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        height: 100vh;
+        padding: 40px 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="deck-container">
+
+    <!-- ================= SLIDE 1: PROBLEM STATEMENT ================= -->
+    <div class="slide active" id="slide-1">
+      <div class="slide-header">
+        <span class="slide-badge">🌱 EcoProject AI • Slide 1 of 7</span>
+        <h2 class="slide-title">1. Problem Statement & Context</h2>
+        <p class="slide-subtitle">The systemic limitation in current sustainability ideation tools and on-ground environmental bottlenecks.</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card comp-box-danger">
+            <h3>❌ The Problem: Template Fatigue & Disconnect</h3>
+            <ul>
+              <li><strong>Generic Platitudes:</strong> Conventional AI tools output superficial advice like <em>"Use AI to reduce waste"</em> without actionable technical specifications.</li>
+              <li><strong>Ignoring Root Causes:</strong> They address symptoms (e.g. food in trash) rather than root causes (e.g. attendance volatility, lack of cold-storage).</li>
+              <li><strong>Context Blindness:</strong> They propose high-power cloud setups in rural farming villages experiencing 6-hour daily blackouts.</li>
+              <li><strong>Hallucinatory Fallbacks:</strong> They force non-environmental queries (crypto, gaming) into arbitrary, fabricated eco-solutions.</li>
+            </ul>
+          </div>
+
+          <div class="card comp-box-success">
+            <h3>✅ EcoProject AI Intervention</h3>
+            <ul>
+              <li><strong>Dynamic Diagnostic Reasoning:</strong> Zero predefined boilerplate; parses specific operational failure modes.</li>
+              <li><strong>Logically Connected Chain:</strong> Preserves strict causal coherence: <strong>Problem → Causes → Impacts → Solution</strong>.</li>
+              <li><strong>Strict Environmental Gate:</strong> Rejects non-sustainability prompts with guided feedback.</li>
+              <li><strong>Constraint-Aware Sizing:</strong> Tailors Bill of Materials (BOM) to target setting and difficulty.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>EcoProject AI Executive Presentation</span>
+        <span>Slide 1 of 7</span>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 2: OBJECTIVES ================= -->
+    <div class="slide" id="slide-2">
+      <div class="slide-header">
+        <span class="slide-badge">Milestones & Goals • Slide 2 of 7</span>
+        <h2 class="slide-title">2. Objectives</h2>
+        <p class="slide-subtitle">Measurable technical goals established to deliver rigorous, jury-ready sustainability proposals.</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>🛡️ 1. Relevance Gate</h3>
+            <p>Automatically classify inputs as <code>ENVIRONMENTAL</code> or <code>NON_ENVIRONMENTAL</code>; block non-sustainability inputs to maintain scientific integrity.</p>
+          </div>
+          <div class="card">
+            <h3>🔬 2. Root-Cause Isolation</h3>
+            <p>Differentiate between visible symptoms and physical/behavioral failure modes (e.g. concealed riser ruptures, student turnout variance, gate idling queues).</p>
+          </div>
+          <div class="card">
+            <h3>🔗 3. Causal Solution Mapping</h3>
+            <p>Guarantee that every single engineering feature directly neutralizes a specific diagnosed cause with zero disconnected filler.</p>
+          </div>
+          <div class="card">
+            <h3>📐 4. 6-Point Matrix Sizing</h3>
+            <p>Answer: <em>What is monitored, Who uses it, What data is collected, How tech is applied, What action is taken, and How impact is reduced.</em></p>
+          </div>
+          <div class="card">
+            <h3>⚙️ 5. Multi-Tier Calibration</h3>
+            <p>Calibrate hardware (Arduino vs ESP32 vs Jetson) and software to three scopes: <strong>Beginner</strong>, <strong>Intermediate</strong>, or <strong>Advanced</strong>.</p>
+          </div>
+          <div class="card">
+            <h3>📥 6. Academic Export</h3>
+            <p>Deliver download-ready Markdown proposals, structured JSON, and PDF-ready technical reports for capstone submissions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>EcoProject AI Executive Presentation</span>
+        <span>Slide 2 of 7</span>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 3: METHODOLOGY ================= -->
+    <div class="slide" id="slide-3">
+      <div class="slide-header">
+        <span class="slide-badge">System Workflow • Slide 3 of 7</span>
+        <h2 class="slide-title">3. Methodology</h2>
+        <p class="slide-subtitle">A 4-stage natural language and engineering pipeline executed on every user submission.</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-4">
+          <div class="card" style="border-top: 4px solid #176b3a;">
+            <div style="font-size: 22px; margin-bottom: 6px;">1️⃣</div>
+            <strong style="color: var(--primary);">Classification</strong>
+            <p style="margin-top: 6px;">Parses input tokens against environmental taxonomies. Disqualifies non-environmental queries with guided feedback.</p>
+          </div>
+
+          <div class="card" style="border-top: 4px solid #27ae60;">
+            <div style="font-size: 22px; margin-bottom: 6px;">2️⃣</div>
+            <strong style="color: var(--primary);">Decomposition</strong>
+            <p style="margin-top: 6px;">Extracts specific resource streams (greywater, food scraps, PM2.5) and local constraints (power cuts, no Wi-Fi, low budget).</p>
+          </div>
+
+          <div class="card" style="border-top: 4px solid #2980b9;">
+            <div style="font-size: 22px; margin-bottom: 6px;">3️⃣</div>
+            <strong style="color: var(--primary);">Causal Synthesis</strong>
+            <p style="margin-top: 6px;">Synthesizes formal problem statement, root causes, operational impacts, and paired technical countermeasures.</p>
+          </div>
+
+          <div class="card" style="border-top: 4px solid #8e44ad;">
+            <div style="font-size: 22px; margin-bottom: 6px;">4️⃣</div>
+            <strong style="color: var(--primary);">Stack Sizing</strong>
+            <p style="margin-top: 6px;">Sizes hardware, software, protocols, and computes quantified environmental offsets and Bill of Materials (BOM).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>EcoProject AI Executive Presentation</span>
+        <span>Slide 3 of 7</span>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 4: TECHNOLOGY ================= -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <span class="slide-badge">Engineering Stack • Slide 4 of 7</span>
+        <h2 class="slide-title">4. Technology</h2>
+        <p class="slide-subtitle">Modern, lightweight, serverless engineering stack optimized for zero-cost deployment.</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>💻 Frontend & Web Engine</h3>
+            <ul>
+              <li><strong>HTML5 / CSS3 / ES6+ JavaScript:</strong> Zero bloated frameworks, runs natively in any browser.</li>
+              <li><strong>Responsive CSS Grid & Flexbox:</strong> 100% mobile-friendly with smooth transitions.</li>
+              <li><strong>Serverless Architecture:</strong> Zero hosting cost, deployed globally on GitHub Pages.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🤖 Artificial Intelligence</h3>
+            <ul>
+              <li><strong>Google Gemini 3.6 Flash:</strong> REST API integration (<code>models/gemini-3.6-flash</code>).</li>
+              <li><strong>Automatic Multi-Model Fallback:</strong> Retries with gemini-2.5-flash and client-side heuristics.</li>
+              <li><strong>Deterministic Output:</strong> Strict JSON schema output preventing hallucinated filler.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🔌 Calibrated Hardware Tiers</h3>
+            <ul>
+              <li><strong>Beginner:</strong> Arduino Uno / Pi Pico, analog float & ultrasonic sensors.</li>
+              <li><strong>Intermediate:</strong> ESP32 Dual-Core MCU, relay boards, FreeRTOS, MQTT.</li>
+              <li><strong>Advanced:</strong> NVIDIA Jetson Orin Nano, RS485 Modbus, LoRaWAN 868/915 MHz.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>EcoProject AI Executive Presentation</span>
+        <span>Slide 4 of 7</span>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 5: INNOVATION ================= -->
+    <div class="slide" id="slide-5">
+      <div class="slide-header">
+        <span class="slide-badge">Core Novelty • Slide 5 of 7</span>
+        <h2 class="slide-title">5. Innovation</h2>
+        <p class="slide-subtitle">Key architectural differentiators that separate EcoProject AI from traditional chatbots.</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>🧠 Dual-Engine Architecture</h3>
+            <p>
+              Combines a <strong>Zero-Latency Built-in Semantic Analyst</strong> (running 100% offline in browser with zero API dependencies) 
+              with optional <strong>Live Google Gemini 3.6 Flash</strong> reasoning, complete with automatic fallback.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>🎯 1:1 Cause-and-Effect Matrix</h3>
+            <p>
+              Replaces vague summaries with explicit paired countermeasure blocks. If Cause A is <em>"lack of localized cold storage"</em>, 
+              Countermeasure A is <em>"an automated surplus dispatch alert notifying local shelters within a 3-hour window."</em>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>📊 Adaptive Bill of Materials (BOM)</h3>
+            <p>
+              Answers the #1 jury question: <em>"How much will this cost?"</em> Synthesizes realistic hardware components, 
+              software licenses, and estimated price ranges calibrated to student budgets vs commercial scale.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>🚫 Anti-Hallucination Rejection Gate</h3>
+            <p>
+              Unlike ChatGPT or generic LLMs that attempt to answer any prompt, EcoProject AI strictly enforces domain relevance, 
+              preventing non-environmental contamination.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>EcoProject AI Executive Presentation</span>
+        <span>Slide 5 of 7</span>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 6: SDG ALIGNMENT ================= -->
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <span class="slide-badge">Global Alignment • Slide 6 of 7</span>
+        <h2 class="slide-title">6. SDG Alignment</h2>
+        <p class="slide-subtitle">Grounding localized engineering interventions in United Nations Sustainable Development Goals.</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>💧 SDG 6: Clean Water</h3>
+            <p>Sub-metered ultrasonic leak detection and flow regulation networks preventing municipal distribution loss.</p>
+          </div>
+          <div class="card">
+            <h3>⚡ SDG 7: Clean Energy</h3>
+            <p>Automated phantom draw curtailment and smart HVAC thermostat scheduling flattening peak grid loads.</p>
+          </div>
+          <div class="card">
+            <h3>🏙️ SDG 11: Sustainable Cities</h3>
+            <p>Intelligent school/campus gate pacing to eliminate vehicle idling queues and localized PM2.5 soot exposure.</p>
+          </div>
+          <div class="card">
+            <h3>♻️ SDG 12: Responsible Consumption</h3>
+            <p>Post-consumer food scrap tracking and rapid surplus shelter dispatch preventing organic landfill disposal.</p>
+          </div>
+          <div class="card">
+            <h3>🌡️ SDG 13: Climate Action</h3>
+            <p>Direct reduction of methane (CH₄) and carbon dioxide (CO₂) emissions through proactive sensor telemetry.</p>
+          </div>
+          <div class="card">
+            <h3>🌊 SDG 14/15: Life Below Water & Land</h3>
+            <p>Autonomous shoreline plastic mapping and litter collection optimization protecting coastal and soil biodiversity.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>EcoProject AI Executive Presentation</span>
+        <span>Slide 6 of 7</span>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 7: EXPECTED IMPACT ================= -->
+    <div class="slide" id="slide-7">
+      <div class="slide-header">
+        <span class="slide-badge">Outcomes & Value • Slide 7 of 7</span>
+        <h2 class="slide-title">7. Expected Impact</h2>
+        <p class="slide-subtitle">Measurable environmental, academic, and economic deliverables generated by the platform.</p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>🌍 Environmental Impact</h3>
+            <ul>
+              <li><strong>Quantified Reductions:</strong> Concrete metrics (e.g. 740 kg CO₂e offset, 14,500 L water conserved monthly).</li>
+              <li><strong>Prevention Over Cleanup:</strong> Stops waste at source rather than treating downstream pollution.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🎓 Academic & Capstone Value</h3>
+            <ul>
+              <li><strong>Jury-Ready Proposals:</strong> Answers what, who, data, tech, action, and impact.</li>
+              <li><strong>One-Click Export:</strong> Download Markdown documentation, copy proposal text, or export PDF.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>💰 Economic Feasibility</h3>
+            <ul>
+              <li><strong>Low Implementation Overhead:</strong> Leverages open-source hardware and serverless hosting.</li>
+              <li><strong>Clear Payback Period:</strong> Average project ROI between 3 to 6 months via utility and waste savings.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>EcoProject AI Executive Presentation</span>
+        <span>Slide 7 of 7</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= PRESENTATION CONTROLS ================= -->
+  <div class="controls-bar">
+    <div>
+      <span>Use <strong>◀ Left</strong> and <strong>Right ▶</strong> Arrow Keys to navigate</span>
+    </div>
+    <div class="control-buttons">
+      <button class="nav-btn" onclick="prevSlide()">◀ Previous</button>
+      <span id="slideCounter" style="display: inline-flex; align-items: center; padding: 0 10px; font-weight: 700; color: white;">1 / 7</span>
+      <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+      <button class="nav-btn" onclick="window.print()" style="background: var(--primary); border-color: var(--primary);">🖨️ Print / Save as PDF</button>
+    </div>
+  </div>
+
+  <!-- Navigation Script -->
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 7;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      document.querySelectorAll('.slide').forEach((s, idx) => {
+        if (idx + 1 === currentSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+  </script>
+
+</body>
+</html>

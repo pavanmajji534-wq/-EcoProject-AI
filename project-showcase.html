@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoProject AI - Project Showcase & Executive Briefing Document</title>
+
+  <!-- 
+    ==========================================================================
+    ECOPROJECT AI - SHAREABLE EXECUTIVE BRIEFING & TECHNICAL SHOWCASE
+    ==========================================================================
+    This self-contained document is designed to be shared with professors,
+    evaluators, mentors, or collaborators to present the complete project, 
+    its architectural innovation, and dynamic problem-solving capabilities.
+    ==========================================================================
+  -->
+
+  <style>
+    :root {
+      --primary: #176b3a;
+      --primary-dark: #0f4d28;
+      --primary-light: #e8f7ed;
+      --accent: #27ae60;
+      --text-dark: #122217;
+      --text-muted: #536458;
+      --bg-page: #f6faf7;
+      --bg-card: #ffffff;
+      --border: #dce7e0;
+      --danger: #c0392b;
+      --warning: #d35400;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-dark);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+
+    .doc-container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 45px rgba(23, 107, 58, 0.08);
+      overflow: hidden;
+    }
+
+    /* ================= HEADER & BANNER ================= */
+    .doc-header {
+      background: linear-gradient(135deg, #176b3a 0%, #104826 100%);
+      color: white;
+      padding: 50px 45px 40px;
+      position: relative;
+    }
+
+    .doc-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 16px;
+    }
+
+    .doc-header h1 {
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .doc-header p {
+      font-size: 16.5px;
+      opacity: 0.92;
+      max-width: 780px;
+      line-height: 1.55;
+    }
+
+    .meta-bar {
+      display: flex;
+      gap: 24px;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 13px;
+      opacity: 0.85;
+      flex-wrap: wrap;
+    }
+
+    /* ================= DOCUMENT BODY ================= */
+    .doc-body {
+      padding: 45px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      color: var(--primary-dark);
+      margin: 35px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    /* ================= HIGHLIGHT & CALLOUT BOXES ================= */
+    .callout-box {
+      background: #f4faf6;
+      border-left: 4px solid var(--primary);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .callout-box h3 {
+      font-size: 16px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .callout-box p {
+      font-size: 14px;
+      color: #38493d;
+      margin-bottom: 0;
+    }
+
+    /* ================= COMPARISON TABLE ================= */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #eef6f1;
+      color: var(--primary-dark);
+      padding: 12px 16px;
+      font-weight: 700;
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #edf2ee;
+      vertical-align: top;
+      color: #3e5044;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-check {
+      background: #d4edda;
+      color: #155724;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .badge-cross {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* ================= SYSTEM MATRIX GRID ================= */
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .matrix-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .matrix-card small {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .matrix-card p {
+      font-size: 13.5px;
+      color: #405245;
+      margin-bottom: 0;
+      line-height: 1.45;
+    }
+
+    /* ================= INTERACTIVE SCENARIO VIEWER ================= */
+    .scenario-box {
+      background: #f8fbf9;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .scenario-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .scenario-tab-btn {
+      padding: 9px 16px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .scenario-tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .scenario-content {
+      display: none;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    .scenario-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scen-input {
+      background: #ffffff;
+      border: 1px solid #e1ebe4;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #213125;
+      margin-bottom: 16px;
+    }
+
+    .scen-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .scen-col {
+      background: white;
+      border: 1px solid #e1ebe4;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    .scen-col strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    /* ================= ACTION BUTTONS & FOOTER ================= */
+    .doc-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-light);
+    }
+
+    /* ================= PRINT STYLES ================= */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .doc-container {
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+      }
+
+      .doc-actions, .scenario-tabs {
+        display: none !important;
+      }
+
+      .scenario-content {
+        display: block !important;
+        margin-bottom: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .matrix-grid, .scen-breakdown {
+        grid-template-columns: 1fr;
+      }
+      .doc-header {
+        padding: 35px 25px;
+      }
+      .doc-body {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="doc-container">
+
+    <!-- ================= COVER / HEADER ================= -->
+    <header class="doc-header">
+      <div class="doc-tag">🌱 Executive Project Briefing & Technical Showcase</div>
+      <h1>EcoProject AI: Contextual Sustainable Project Architect</h1>
+      <p>
+        An intelligent, non-generic environmental problem analyzer and engineering solution architect. 
+        Engineered to transform localized sustainability challenges into rigorous, causal technical proposals 
+        aligned with UN Sustainable Development Goals.
+      </p>
+
+      <div class="meta-bar">
+        <span><strong>Technology:</strong> Vanilla JS / Dynamic Heuristic Engine / Gemini 3.6 Flash</span>
+        <span><strong>Target Deployment:</strong> GitHub Pages (Static Serverless)</span>
+        <span><strong>Status:</strong> Ready for Evaluation / Review</span>
+      </div>
+    </header>
+
+    <!-- ================= DOCUMENT BODY ================= -->
+    <main class="doc-body">
+
+      <!-- 1. EXECUTIVE SUMMARY -->
+      <h2 class="section-title">1. Executive Summary & Problem Statement</h2>
+      <p>
+        Environmental problem-solving in universities, hackathons, and local municipalities frequently suffers 
+        from <strong>template fatigue</strong>: students and practitioners identify real-world sustainability 
+        bottlenecks, but available generation tools return generic platitudes (e.g., <em>"Use an AI system to solve waste"</em>) 
+        without analyzing root causes, physical constraints, or measurable data flows.
+      </p>
+
+      <div class="callout-box">
+        <h3>💡 The Core Innovation</h3>
+        <p>
+          <strong>EcoProject AI</strong> operates as a genuine <strong>diagnostic analyst</strong>, not a database of static templates. 
+          Every submission is evaluated for environmental validity, decomposed into specific operational root causes, 
+          and synthesized into a logically connected <strong>Problem → Cause → Impact → Solution</strong> chain with calibrated hardware 
+          and software specifications.
+        </p>
+      </div>
+
+      <!-- 2. ARCHITECTURAL COMPARISON -->
+      <h2 class="section-title">2. Architectural Comparison: Generic vs. EcoProject AI</h2>
+      <p>
+        How this project deliberately avoids the pitfalls of predefined static template generators:
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Evaluation Dimension</th>
+              <th>Typical Generic Generators</th>
+              <th>EcoProject AI Architecture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Non-Environmental Input</strong></td>
+              <td>Forces unrelated text into an arbitrary generic eco template.</td>
+              <td><span class="badge-check">Strict Gate</span> Refuses generation, requests clearer environmental problem with guided reasons.</td>
+            </tr>
+            <tr>
+              <td><strong>Problem Synthesis</strong></td>
+              <td>Repeats the user's raw input verbatim without analysis.</td>
+              <td><span class="badge-check">Dynamic Extraction</span> Re-architects a formal problem statement contextualizing localized failure modes.</td>
+            </tr>
+            <tr>
+              <td><strong>Causal Chaining</strong></td>
+              <td>Decoupled or disconnected generic objectives.</td>
+              <td><span class="badge-check">100% Causal</span> Direct 1-to-1 mapping between diagnosed causes and technical countermeasures.</td>
+            </tr>
+            <tr>
+              <td><strong>Complexity Calibration</strong></td>
+              <td>Fixed identical tech stack regardless of level.</td>
+              <td><span class="badge-check">Adaptive BOM</span> Beginner (Arduino/Pico), Intermediate (ESP32/Cloud), Advanced (Jetson/LoRaWAN).</td>
+            </tr>
+            <tr>
+              <td><strong>LLM Integration</strong></td>
+              <td>Deprecated models or no offline capability.</td>
+              <td><span class="badge-check">Dual Engine</span> Zero-latency client-side NLP engine + live Google <code>gemini-3.6-flash</code> integration.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 3. THE 6-POINT SYSTEMATIC ARCHITECTURE MATRIX -->
+      <h2 class="section-title">3. The 6-Point Systematic Architecture Matrix</h2>
+      <p>
+        Every generated project answers the critical engineering questions required by academic juries and grant evaluators:
+      </p>
+
+      <div class="matrix-grid">
+        <div class="matrix-card">
+          <small>1. What Is Monitored?</small>
+          <p>Pinpoints the exact physical medium (e.g., plate-waste weight, ultrasonic flow pulse, PM2.5 particle density).</p>
+        </div>
+        <div class="matrix-card">
+          <small>2. Who Uses The System?</small>
+          <p>Identifies exact on-ground stakeholders (dining managers, plumbers, security gate marshals, municipal crews).</p>
+        </div>
+        <div class="matrix-card">
+          <small>3. What Data Is Collected?</small>
+          <p>Specifies telemetry units: differential pressure ($\Delta P$), timestamps, GPS coordinates, scrap grams.</p>
+        </div>
+        <div class="matrix-card">
+          <small>4. How Technology Is Applied?</small>
+          <p>Articulates algorithms: time-series forecasting, TinyML vision segmentation, rule-based threshold relays.</p>
+        </div>
+        <div class="matrix-card">
+          <small>5. What Action Is Taken?</small>
+          <p>Closed-loop mitigation: motorized solenoid shutoff, prep reduction alerts, surplus food shelter dispatch.</p>
+        </div>
+        <div class="matrix-card">
+          <small>6. Environmental Reduction</small>
+          <p>Quantified metrics: $\text{CO}_2\text{e}$ offsets, liters conserved, landfill diversion percentage.</p>
+        </div>
+      </div>
+
+      <!-- 4. LIVE INTERACTIVE SCENARIOS -->
+      <h2 class="section-title">4. Real-World Diagnostic Demonstrations</h2>
+      <p>
+        Select any of the 3 validated test scenarios below to see how the engine adapts specifically to different inputs:
+      </p>
+
+      <div class="scenario-box">
+        <div class="scenario-tabs">
+          <button class="scenario-tab-btn active" onclick="switchScenario(0)">Scenario A: Coastal Plastics</button>
+          <button class="scenario-tab-btn" onclick="switchScenario(1)">Scenario B: Dining Food Waste</button>
+          <button class="scenario-tab-btn" onclick="switchScenario(2)">Scenario C: Apartment Water Leaks</button>
+          <button class="scenario-tab-btn" onclick="switchScenario(3)">Scenario D: Non-Environmental (Rejection)</button>
+        </div>
+
+        <!-- Scenario A -->
+        <div class="scenario-content active" id="scen-0">
+          <div class="scen-input">
+            <strong>User Input:</strong> "Plastic waste near beaches" | <strong>Context:</strong> Coastal area | <strong>Tech:</strong> IoT & Vision | <strong>Level:</strong> Intermediate
+          </div>
+          <div class="scen-breakdown">
+            <div class="scen-col">
+              <strong>⚠️ Diagnosed Causes & Impacts:</strong>
+              • Causes: Tidal wash-in timing mismatch with sanitation shift hours; tourist footfall at unmonitored bin zones.<br>
+              • Impacts: Marine wildlife entanglement; polymer breakdown into toxic microplastics; coastal tourism decline.
+            </div>
+            <div class="scen-col">
+              <strong>✅ Engineered Solution:</strong>
+              Autonomous Shoreline Plastic Tracking System using solar edge vision nodes to map accumulation clusters and dispatch prioritized cleanup routes to sanitation crews before tides recede.
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenario B -->
+        <div class="scenario-content" id="scen-1">
+          <div class="scen-input">
+            <strong>User Input:</strong> "Food waste in college canteens" | <strong>Context:</strong> College Campus | <strong>Tech:</strong> AI + IoT | <strong>Level:</strong> Advanced
+          </div>
+          <div class="scen-breakdown">
+            <div class="scen-col">
+              <strong>⚠️ Diagnosed Causes & Impacts:</strong>
+              • Causes: Unpredictable attendance variance; batch over-preparation; lack of cold-chain redistribution.<br>
+              • Impacts: Methane ($\text{CH}_4$) landfill release; embedded agricultural water waste; institutional budget loss.
+            </div>
+            <div class="scen-col">
+              <strong>✅ Engineered Solution:</strong>
+              Predictive Food Waste Minimization Platform combining smart load-cell scales under disposal bins with ML time-series forecasting to generate prep reduction targets and dispatch surplus to food banks.
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenario C -->
+        <div class="scenario-content" id="scen-2">
+          <div class="scen-input">
+            <strong>User Input:</strong> "Water wastage in apartments" | <strong>Context:</strong> Residential | <strong>Tech:</strong> IoT & Sensors | <strong>Level:</strong> Intermediate
+          </div>
+          <div class="scen-breakdown">
+            <div class="scen-col">
+              <strong>⚠️ Diagnosed Causes & Impacts:</strong>
+              • Causes: Master-meter billing masking individual leaks; concealed riser pipe ruptures; faulty overhead tank float valves.<br>
+              • Impacts: Aquifer depletion; structural moisture and concrete dampness; inflated municipal water tariffs.
+            </div>
+            <div class="scen-col">
+              <strong>✅ Engineered Solution:</strong>
+              Sub-Metered Leak Detection Network retrofitting ultrasonic flow transducers and pressure sensors, notifying tenants of nocturnal flow anomalies and triggering motorized shutoff valves during pipe bursts.
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenario D -->
+        <div class="scenario-content" id="scen-3">
+          <div class="scen-input">
+            <strong>User Input:</strong> "I need an app to track my crypto portfolio and give me stock trading signals."
+          </div>
+          <div class="scen-breakdown">
+            <div class="scen-col" style="grid-column: 1 / -1; border-left: 4px solid var(--warning); background: #fffcf8;">
+              <strong style="color: var(--warning);">⚠️ System Validation Output:</strong>
+              <p style="color: #633c02; font-size: 14px; margin-top: 6px;">
+                <strong>Clearer Problem Statement Required</strong><br>
+                <em>"This does not appear to be an environmental or sustainability problem. Please describe an environmental issue such as waste management, water conservation, pollution, energy efficiency, biodiversity, etc."</em>
+              </p>
+              <small style="color: #8c5b16;">• Zero generic boilerplate generated. System preserves scientific integrity.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. UN SUSTAINABLE DEVELOPMENT GOALS -->
+      <h2 class="section-title">5. United Nations Sustainable Development Goals (SDGs)</h2>
+      <p>
+        Interventions generated by the system directly align with measurable UN targets:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-size: 13.5px; color: #2d3e33;">
+        <div style="padding: 12px; background: #eef6f1; border-radius: 10px;"><strong>💧 SDG 6:</strong> Clean Water & Sanitation</div>
+        <div style="padding: 12px; background: #eef6f1; border-radius: 10px;"><strong>⚡ SDG 7:</strong> Affordable & Clean Energy</div>
+        <div style="padding: 12px; background: #eef6f1; border-radius: 10px;"><strong>🏙️ SDG 11:</strong> Sustainable Cities & Communities</div>
+        <div style="padding: 12px; background: #eef6f1; border-radius: 10px;"><strong>♻️ SDG 12:</strong> Responsible Consumption</div>
+        <div style="padding: 12px; background: #eef6f1; border-radius: 10px;"><strong>🌡️ SDG 13:</strong> Climate Action</div>
+        <div style="padding: 12px; background: #eef6f1; border-radius: 10px;"><strong>🌊 SDG 14:</strong> Life Below Water</div>
+      </div>
+
+      <!-- 6. ACTIONS -->
+      <div class="doc-actions">
+        <div>
+          <button class="btn btn-primary" onclick="window.print()">
+            <span>🖨️</span> Print / Save as PDF
+          </button>
+          <a href="index.html" class="btn btn-outline" target="_blank">
+            <span>🚀</span> Launch Interactive Application
+          </a>
+        </div>
+        <div style="font-size: 12.5px; color: #7a8c80;">
+          Document generated by EcoProject AI Architecture Suite • 2026
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    function switchScenario(index) {
+      const tabs = document.querySelectorAll('.scenario-tab-btn');
+      const contents = document.querySelectorAll('.scenario-content');
+      
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      contents.forEach((content, i) => {
+        if (i === index) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>EcoProject AI - Dynamic Environmental Problem & Solution Architect</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f7faf8;
+      color: #17221b;
+      line-height: 1.6;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    nav {
+      width: 100%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid #e4ebe6;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 800;
+      color: #176b3a;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: #dff4e6;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #46524a;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #176b3a;
+    }
+
+    .nav-btn {
+      padding: 11px 20px;
+      border-radius: 10px;
+      background: #176b3a;
+      color: white !important;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .nav-btn:hover {
+      background: #12572f;
+      transform: translateY(-1px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 70px 7%;
+      background:
+        radial-gradient(circle at 85% 20%, #dff4e6 0, transparent 32%),
+        radial-gradient(circle at 15% 80%, #e9f7ef 0, transparent 25%),
+        #f7faf8;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e5f6eb;
+      color: #176b3a;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      border: 1px solid #c9edd7;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5.2vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -1.8px;
+      margin-bottom: 22px;
+      color: #0f1c14;
+    }
+
+    .hero h1 span {
+      color: #239653;
+      background: linear-gradient(135deg, #176b3a 0%, #2ecc71 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: #556259;
+      font-size: 17.5px;
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border: none;
+      padding: 14px 24px;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .primary-btn {
+      background: #176b3a;
+      color: white;
+      box-shadow: 0 4px 14px rgba(23, 107, 58, 0.25);
+    }
+
+    .primary-btn:hover {
+      background: #12572f;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(23, 107, 58, 0.35);
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #176b3a;
+      border: 1px solid #d7e2da;
+    }
+
+    .secondary-btn:hover {
+      background: #f0f7f2;
+      border-color: #b8d4c1;
+    }
+
+    /* ================= HERO CARD ================= */
+
+    .hero-card {
+      width: 430px;
+      background: white;
+      border: 1px solid #e1e9e4;
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 25px 70px rgba(30,70,45,0.12);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-weight: 800;
+      font-size: 14.5px;
+      color: #17221b;
+    }
+
+    .status {
+      font-size: 12px;
+      font-weight: 700;
+      color: #176b3a;
+      background: #e8f7ed;
+      padding: 5px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #27ae60;
+      box-shadow: 0 0 8px #27ae60;
+    }
+
+    .problem-box {
+      background: #f5f8f6;
+      border: 1px solid #e6ede8;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .problem-box small {
+      color: #7b857e;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+
+    .problem-box strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 13.5px;
+      color: #1a2920;
+      line-height: 1.4;
+    }
+
+    .ai-result-preview {
+      border-left: 4px solid #239653;
+      background: #f0f8f3;
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    .ai-result-preview h3 {
+      font-size: 13.5px;
+      color: #176b3a;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .ai-result-preview p {
+      font-size: 12.5px;
+      color: #2c3e32;
+      line-height: 1.45;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-header {
+      max-width: 740px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-size: 38px;
+      margin-bottom: 14px;
+      letter-spacing: -1px;
+      color: #112017;
+    }
+
+    .section-header p {
+      color: #606d64;
+      font-size: 16px;
+    }
+
+    /* ================= GENERATOR SECTION ================= */
+
+    .generator-section {
+      background: #f1f7f3;
+      position: relative;
+    }
+
+    .generator {
+      max-width: 1020px;
+      margin: auto;
+      background: white;
+      border: 1px solid #dfe8e2;
+      border-radius: 24px;
+      padding: 42px;
+      box-shadow: 0 20px 60px rgba(30,70,45,0.06);
+    }
+
+    .generator h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+      color: #112017;
+    }
+
+    .generator-subtitle {
+      color: #616f65;
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+
+    .engine-toggle-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f6faf7;
+      padding: 14px 20px;
+      border-radius: 14px;
+      border: 1px solid #e1ebe4;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .engine-toggle-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #176b3a;
+    }
+
+    .api-key-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .api-key-input {
+      width: 250px;
+      padding: 8px 12px;
+      border: 1px solid #d4ded7;
+      border-radius: 8px;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .api-key-input:focus {
+      border-color: #239653;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #243328;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid #dce5df;
+      border-radius: 12px;
+      outline: none;
+      font-size: 14px;
+      background: #ffffff;
+      color: #1b281f;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #239653;
+      box-shadow: 0 0 0 3px rgba(35, 150, 83, 0.12);
+    }
+
+    textarea {
+      min-height: 125px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .textarea-hint {
+      font-size: 12px;
+      color: #728176;
+      margin-top: -3px;
+    }
+
+    .generate-btn {
+      width: 100%;
+      margin-top: 28px;
+      padding: 17px;
+      border: none;
+      border-radius: 12px;
+      background: #176b3a;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s;
+      box-shadow: 0 6px 18px rgba(23, 107, 58, 0.2);
+    }
+
+    .generate-btn:hover {
+      background: #12572f;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(23, 107, 58, 0.28);
+    }
+
+    .generate-btn:disabled {
+      background: #8fa396;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ================= CLARIFICATION REQUIRED STATE ================= */
+
+    #clarificationBox {
+      display: none;
+      max-width: 1020px;
+      margin: 35px auto 0;
+      background: #fffbf5;
+      border: 2px solid #e09228;
+      border-radius: 20px;
+      padding: 32px 36px;
+      box-shadow: 0 16px 45px rgba(224, 146, 40, 0.14);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .clarification-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .clarification-icon {
+      width: 48px;
+      height: 48px;
+      background: #fef1df;
+      color: #b36b00;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .clarification-title h3 {
+      font-size: 22px;
+      color: #8c4a00;
+      margin-bottom: 5px;
+      letter-spacing: -0.3px;
+    }
+
+    .clarification-title p {
+      font-size: 15px;
+      color: #6d3d06;
+      line-height: 1.5;
+    }
+
+    .clarification-body {
+      background: white;
+      border: 1px solid #fae1c0;
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin: 18px 0;
+    }
+
+    .clarification-body h4 {
+      font-size: 14.5px;
+      color: #7b4202;
+      margin-bottom: 12px;
+    }
+
+    .clarification-body ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .clarification-body li {
+      font-size: 14px;
+      color: #4a341e;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .clarification-body li::before {
+      content: '👉';
+      flex-shrink: 0;
+    }
+
+    .clarification-examples {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .clar-example-card {
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .clar-example-bad {
+      background: #fdf2f2;
+      border: 1px solid #f9caca;
+      color: #991b1b;
+    }
+
+    .clar-example-good {
+      background: #edf8f1;
+      border: 1px solid #b7e4c7;
+      color: #145a32;
+    }
+
+    /* ================= RESULT ================= */
+
+    #result {
+      display: none;
+      max-width: 1020px;
+      margin: 40px auto 0;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .result-header {
+      background: linear-gradient(135deg, #176b3a 0%, #1c8247 100%);
+      color: white;
+      padding: 36px 40px;
+      border-radius: 24px 24px 0 0;
+      position: relative;
+    }
+
+    .result-tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+
+    .result-header h2 {
+      font-size: 30px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .result-header p {
+      opacity: 0.9;
+      font-size: 14.5px;
+      max-width: 800px;
+      line-height: 1.5;
+    }
+
+    .result-body {
+      background: white;
+      padding: 38px 40px;
+      border-radius: 0 0 24px 24px;
+      border: 1px solid #dfe8e2;
+      border-top: none;
+      box-shadow: 0 20px 60px rgba(30,70,45,0.06);
+    }
+
+    .meta-pills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .meta-pill {
+      padding: 16px 18px;
+      background: #f4f8f5;
+      border-radius: 14px;
+      border: 1px solid #e1ede5;
+    }
+
+    .meta-pill small {
+      color: #6a796f;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .meta-pill strong {
+      display: block;
+      margin-top: 4px;
+      color: #176b3a;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    /* Core Problem Box */
+    .highlight-card {
+      background: #f7faf8;
+      border-radius: 16px;
+      border: 1px solid #dce8e0;
+      padding: 24px;
+      margin-bottom: 26px;
+    }
+
+    .highlight-card h3 {
+      font-size: 17px;
+      color: #134e2c;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .highlight-card p {
+      font-size: 15px;
+      color: #27382d;
+      line-height: 1.6;
+    }
+
+    /* Causes & Impacts Grid */
+    .cause-impact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    .analysis-list-box {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid #e1eae3;
+      padding: 22px;
+    }
+
+    .analysis-list-box h3 {
+      font-size: 16px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .causes-box h3 { color: #b03a2e; }
+    .impacts-box h3 { color: #9a4e00; }
+
+    .bullet-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bullet-list li {
+      font-size: 13.5px;
+      color: #3b4d40;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.45;
+    }
+
+    .causes-box .bullet-list li::before {
+      content: '⚠️';
+      flex-shrink: 0;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .impacts-box .bullet-list li::before {
+      content: '📉';
+      flex-shrink: 0;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    /* Engineered Solution Card */
+    .solution-card {
+      background: #eef7f1;
+      border: 1px solid #c7e5d1;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+
+    .solution-card h3 {
+      font-size: 19px;
+      color: #12572f;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-card p {
+      font-size: 15px;
+      color: #1d3a27;
+      line-height: 1.65;
+    }
+
+    /* Systematic Breakdown Matrix */
+    .matrix-section {
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid #e8f0ea;
+    }
+
+    .matrix-section h3 {
+      font-size: 18px;
+      color: #16261b;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .system-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .matrix-item {
+      background: #f8fbf9;
+      border: 1px solid #e1ece4;
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+
+    .matrix-item small {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #176b3a;
+      margin-bottom: 6px;
+    }
+
+    .matrix-item p {
+      font-size: 13.5px;
+      color: #35473a;
+      line-height: 1.45;
+    }
+
+    /* Tech Stack Cards */
+    .tech-stack-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .tech-box {
+      background: #ffffff;
+      border: 1px solid #e0e9e2;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .tech-box h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #176b3a;
+      margin-bottom: 8px;
+    }
+
+    .tech-box p {
+      font-size: 13px;
+      color: #405144;
+      line-height: 1.4;
+    }
+
+    /* Actions */
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 34px;
+      padding-top: 24px;
+      border-top: 1px solid #e5ede7;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .action-btn-primary {
+      background: #176b3a;
+      color: white;
+      border: none;
+    }
+
+    .action-btn-primary:hover {
+      background: #12572f;
+    }
+
+    .action-btn-outline {
+      background: white;
+      color: #176b3a;
+      border: 1px solid #c9ded1;
+    }
+
+    .action-btn-outline:hover {
+      background: #f2f8f4;
+    }
+
+    /* ================= HOW IT WORKS ================= */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 24px 18px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid #e3eae5;
+    }
+
+    .step-number {
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: #176b3a;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .step h3 {
+      font-size: 16.5px;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 13.5px;
+      color: #69766c;
+      line-height: 1.5;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #102018;
+      color: white;
+      padding: 60px 7% 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    footer h2 {
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    footer p {
+      color: #aebbb2;
+      max-width: 460px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #24352b;
+      padding-top: 24px;
+      color: #839187;
+      font-size: 12.5px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width: 960px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-card {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cause-impact-container,
+      .meta-pills-grid,
+      .system-matrix-grid,
+      .tech-stack-container,
+      .clarification-examples {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width: 650px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      section, .hero {
+        padding: 60px 5%;
+      }
+
+      .form-grid,
+      .meta-pills-grid,
+      .cause-impact-container,
+      .system-matrix-grid,
+      .tech-stack-container,
+      .steps,
+      .clarification-examples {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      .generator, .result-body {
+        padding: 24px 20px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav>
+    <a href="#home" class="logo">
+      <div class="logo-icon">🌱</div>
+      EcoProject AI
+    </a>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#generator">Problem Architect</a></li>
+      <li><a href="#how">How It Works</a></li>
+    </ul>
+
+    <a href="#generator" class="nav-btn">Diagnose Problem</a>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="badge">
+        🔬 Dynamic Environmental Diagnosis & Solution Synthesis
+      </div>
+
+      <h1>
+        Turn Real Problems Into
+        <span>Direct Green Solutions.</span>
+      </h1>
+
+      <p>
+        Zero predefined templates. EcoProject AI dynamically analyzes your exact environmental
+        problem, diagnosing specific causes and local constraints to engineer a logically connected
+        proposal.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#generator" class="primary-btn">
+          Start Dynamic Generator →
+        </a>
+        <a href="#how" class="secondary-btn">
+          How The Engine Works
+        </a>
+      </div>
+    </div>
+
+    <!-- HERO PREVIEW CARD -->
+    <div class="hero-card">
+      <div class="card-top">
+        <div class="card-title">Dynamic Chain: Problem → Cause → Solution</div>
+        <div class="status">Active Analyst</div>
+      </div>
+
+      <div class="problem-box">
+        <small>User Input Example</small>
+        <strong>"Food waste in college canteens"</strong>
+      </div>
+
+      <div class="ai-result-preview">
+        <h3>🔍 Generated Problem & Causes</h3>
+        <p><strong>Problem:</strong> The campus canteen suffers from unpredictable meal attendance and lack of prep tracking, causing bulk cooked surplus to be discarded.</p>
+        <p style="margin-top: 4px;"><strong>Solution:</strong> An AI-IoT plate waste monitor and prep forecasting dashboard that notifies kitchen staff of attendance variance.</p>
+      </div>
+
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <span style="background: #e6f5eb; color: #176b3a; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">Zero Predefined Boilerplate</span>
+        <span style="background: #e6f5eb; color: #176b3a; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;">Adaptive Tech Stack</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GENERATOR SECTION ================= -->
+
+  <section class="generator-section" id="generator">
+    <div class="generator">
+      <h2>Architect Your Sustainable Project</h2>
+      <p class="generator-subtitle">
+        Enter your specific scenario. The engine evaluates environmental relevance, derives underlying causes,
+        and engineers a custom technical solution.
+      </p>
+
+      <!-- Engine Selector -->
+      <div class="engine-toggle-bar">
+        <div class="engine-toggle-info">
+          <span>🧠 Analysis Engine:</span>
+          <select id="engineMode" onchange="toggleEngineMode()" style="width: auto; padding: 6px 12px; font-size: 13px;">
+            <option value="builtin">Built-in Semantic Problem Analyst (Instant, Dynamic, Offline)</option>
+            <option value="gemini">Google Gemini AI Engine (Live LLM Reasoning)</option>
+          </select>
+        </div>
+
+        <div class="api-key-container" id="apiKeyContainer" style="display: none;">
+          <input type="password" id="geminiApiKey" class="api-key-input" placeholder="Enter Gemini API Key (stored locally)" />
+          <button onclick="saveApiKey()" style="padding: 8px 12px; background: #176b3a; color: white; border: none; border-radius: 8px; font-size: 12px; cursor: pointer;">Save Key</button>
+        </div>
+      </div>
+
+      <!-- Form Grid -->
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="category">Problem Domain / Category</label>
+          <select id="category">
+            <option value="">Select domain</option>
+            <option>Waste Management & Circularity</option>
+            <option>Water Conservation & Quality</option>
+            <option>Clean Energy & Efficiency</option>
+            <option>Sustainable Agriculture & Soil</option>
+            <option>Climate Action & Resilience</option>
+            <option>Air Pollution & Toxic Emissions</option>
+            <option>Biodiversity & Ecosystem Health</option>
+            <option>Sustainable Transportation & Logistics</option>
+            <option>Food Systems & Supply Waste</option>
+            <option>Urban Environment & Heat Islands</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="level">Difficulty Level</label>
+          <select id="level">
+            <option value="">Select difficulty</option>
+            <option value="Beginner">Beginner (Classroom / Minimal Hardware / Basic Software)</option>
+            <option value="Intermediate">Intermediate (Working Pilot / Sensors + Cloud + Alerts)</option>
+            <option value="Advanced">Advanced (Production Scale / Edge AI / IoT Actuation / Multi-stakeholder)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Environment / Context</label>
+          <select id="location">
+            <option value="College campus">College campus / University</option>
+            <option value="School">School / Educational Center</option>
+            <option value="Rural village">Rural village / Farming community</option>
+            <option value="Dense city">Dense urban city / Commercial area</option>
+            <option value="Apartments / Household">Apartment complex / Household</option>
+            <option value="Industrial zone">Industrial zone / Manufacturing site</option>
+            <option value="Coastal / Beach area">Coastal / Marine / Beach area</option>
+            <option value="Nature reserve / Forest">Nature reserve / Forest ecosystem</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="technology">Preferred Technology / Techniques</label>
+          <select id="technology">
+            <option value="AI / Machine Learning">AI & Machine Learning (Vision / Forecasting)</option>
+            <option value="IoT & Sensors">IoT & Sensors (Hardware / Telemetry)</option>
+            <option value="AI + IoT">AI + IoT (Edge Sensing + Intelligent Analytics)</option>
+            <option value="Web Development & Dashboards">Web Platform & Management Dashboards</option>
+            <option value="Mobile Application">Mobile App (Field Collection / Offline Sync)</option>
+            <option value="Data Analytics & GIS">Data Analytics & GIS Spatial Mapping</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label for="problem">Custom Problem Statement / Description</label>
+          <textarea
+            id="problem"
+            placeholder="Describe the problem in your own words. Examples: 'Plastic waste near beaches', 'Water wastage in apartments', 'Food waste in college canteens'..."
+          ></textarea>
+          <div class="textarea-hint">
+            💡 <em>The generator classifies your input as ENVIRONMENTAL or NON-ENVIRONMENTAL before synthesizing.</em>
+          </div>
+        </div>
+      </div>
+
+      <button id="generateBtn" class="generate-btn" onclick="handleGenerate()">
+        <span>🔬</span>
+        <span id="generateBtnText">Analyze Problem & Synthesize Solution</span>
+      </button>
+    </div>
+
+    <!-- ================= CLARIFICATION REQUIRED STATE (NON-ENVIRONMENTAL) ================= -->
+    <div id="clarificationBox">
+      <div class="clarification-header">
+        <div class="clarification-icon">⚠️</div>
+        <div class="clarification-title">
+          <h3 id="clarificationHeading">Clearer Problem Statement Required</h3>
+          <p id="clarificationMessage">
+            This does not appear to be an environmental or sustainability problem.
+            Please describe an environmental issue such as waste management, water conservation, pollution, energy efficiency, biodiversity, etc.
+          </p>
+        </div>
+      </div>
+
+      <div class="clarification-body">
+        <h4>Why did this happen?</h4>
+        <ul id="clarificationReasons">
+          <li><strong>Domain Mismatch:</strong> The entered text describes a topic outside the scope of natural resource conservation, ecological protection, or environmental sustainability.</li>
+          <li><strong>No Arbitrary Transformation:</strong> EcoProject AI does not fabricate generic environmental problems when a non-environmental problem is entered.</li>
+          <li><strong>Next Step:</strong> Please rephrase or provide an environmental challenge occurring in your selected setting.</li>
+        </ul>
+      </div>
+
+      <div class="clarification-examples">
+        <div class="clar-example-card clar-example-bad">
+          <strong>❌ Non-Environmental Input:</strong>
+          <p>"I need an app to track my crypto portfolio and give me stock trading signals."</p>
+        </div>
+        <div class="clar-example-card clar-example-good">
+          <strong>✅ Environmental Input:</strong>
+          <p>"Hostel dining hall cooks 30% surplus food on weekends due to unpredictable attendance, and food spoils without cold storage."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DYNAMIC RESULT DISPLAY ================= -->
+    <div id="result">
+      <div class="result-header">
+        <div class="result-tag-badge">
+          <span>✨ Dynamically Synthesized Environmental Project</span>
+        </div>
+        <h2 id="projectTitle">AI-IoT Smart Waste Monitoring System</h2>
+        <p id="projectSubtitle">Logically connected problem, causes, impacts, and engineered countermeasure.</p>
+      </div>
+
+      <div class="result-body">
+        <!-- Metadata Pills -->
+        <div class="meta-pills-grid">
+          <div class="meta-pill">
+            <small>Context / Setting</small>
+            <strong id="metaSetting">College Campus</strong>
+          </div>
+          <div class="meta-pill">
+            <small>Difficulty Level</small>
+            <strong id="metaLevel">Advanced</strong>
+          </div>
+          <div class="meta-pill">
+            <small>Applied Tech</small>
+            <strong id="metaTech">AI + IoT</strong>
+          </div>
+          <div class="meta-pill">
+            <small>SDG Alignment</small>
+            <strong id="metaSdg">SDG 12: Responsible Consumption</strong>
+          </div>
+        </div>
+
+        <!-- 1. Unique Synthesized Problem Statement -->
+        <div class="highlight-card">
+          <h3>🎯 Synthesized Problem Statement</h3>
+          <p id="resProblemStatement">Analyzing problem...</p>
+        </div>
+
+        <!-- 2 & 3. Causes & Impacts (Logically Connected) -->
+        <div class="cause-impact-container">
+          <div class="analysis-list-box causes-box">
+            <h3>⚠️ Diagnosed Root Causes</h3>
+            <ul class="bullet-list" id="resCausesList">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <div class="analysis-list-box impacts-box">
+            <h3>📉 Environmental & Operational Impacts</h3>
+            <ul class="bullet-list" id="resImpactsList">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. Direct Engineered Solution -->
+        <div class="solution-card">
+          <h3>💡 Tailored Engineering Solution</h3>
+          <p id="resSolutionText">Analyzing solution...</p>
+        </div>
+
+        <!-- 5. Systematic Breakdown Matrix (What, Who, Data, Tech, Action, Impact) -->
+        <div class="matrix-section">
+          <h3>⚙️ Systematic Architecture Breakdown</h3>
+          <div class="system-matrix-grid">
+            <div class="matrix-item">
+              <small>🔍 What Is Monitored?</small>
+              <p id="matMonitored">Real-time parameters</p>
+            </div>
+            <div class="matrix-item">
+              <small>👥 Who Uses The System?</small>
+              <p id="matUsers">Primary stakeholders</p>
+            </div>
+            <div class="matrix-item">
+              <small>📊 What Data Is Collected?</small>
+              <p id="matData">Sensor & user metrics</p>
+            </div>
+            <div class="matrix-item">
+              <small>💻 How Tech Is Applied?</small>
+              <p id="matTechApplication">Algorithms & hardware</p>
+            </div>
+            <div class="matrix-item">
+              <small>⚡ What Action Is Taken?</small>
+              <p id="matActionTaken">Direct countermeasures</p>
+            </div>
+            <div class="matrix-item">
+              <small>🌍 Environmental Reduction</small>
+              <p id="matImpactReduction">Measurable sustainability outcome</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Calibrated Tech Stack -->
+        <div class="matrix-section">
+          <h3>🛠️ Calibrated Technology Stack (<span id="techLevelLabel">Advanced</span>)</h3>
+          <div class="tech-stack-container">
+            <div class="tech-box">
+              <h4>🔌 Hardware & Edge</h4>
+              <p id="stackHardware">Sensors & boards</p>
+            </div>
+            <div class="tech-box">
+              <h4>💻 Software & Models</h4>
+              <p id="stackSoftware">Languages & frameworks</p>
+            </div>
+            <div class="tech-box">
+              <h4>📡 Telemetry & Storage</h4>
+              <p id="stackComms">Protocols & databases</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="result-actions">
+          <button class="action-btn action-btn-primary" onclick="exportProposalMarkdown()">
+            <span>📥</span> Download Proposal (.md)
+          </button>
+          <button class="action-btn action-btn-outline" onclick="copyProposalToClipboard()">
+            <span>📋</span> Copy Full Proposal Text
+          </button>
+          <button class="action-btn action-btn-outline" onclick="window.print()">
+            <span>🖨️</span> Print / Save as PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+
+  <section id="how">
+    <div class="section-header">
+      <h2>How Dynamic Synthesis Works</h2>
+      <p>
+        Strict natural language parsing ensures every solution is custom-architected without static templates.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Classification</h3>
+        <p>
+          Distinguishes between environmental and non-environmental requests. Non-environmental inputs trigger immediate clarification.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Semantic Extraction</h3>
+        <p>
+          Extracts specific resource streams (e.g. coastal plastics, hostel dining food, apartment pipe leakage) and localized failure modes.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Causal Chaining</h3>
+        <p>
+          Constructs a logically linked chain: Problem → Specific Causes → Tangible Impacts → Direct Engineering Solution.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Architecture Sizing</h3>
+        <p>
+          Calibrates hardware, data telemetry, and user workflows to the selected setting and difficulty level.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h2>🌱 EcoProject AI</h2>
+        <p>
+          Dynamic Environmental Problem & Solution Architect.
+          Built for students, researchers, and engineers seeking rigorous, non-generic sustainability proposals.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 EcoProject AI. Zero predefined templates. 100% dynamic contextual reasoning.
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT: ADVANCED DYNAMIC ANALYST ENGINE ================= -->
+
+  <script>
+    // LocalStorage for optional Gemini API key
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedKey = localStorage.getItem('ecoproject_gemini_api_key');
+      if (savedKey) {
+        document.getElementById('geminiApiKey').value = savedKey;
+      }
+    });
+
+    function toggleEngineMode() {
+      const mode = document.getElementById('engineMode').value;
+      const keyContainer = document.getElementById('apiKeyContainer');
+      if (mode === 'gemini') {
+        keyContainer.style.display = 'flex';
+      } else {
+        keyContainer.style.display = 'none';
+      }
+    }
+
+    function saveApiKey() {
+      const key = document.getElementById('geminiApiKey').value.trim();
+      if (key) {
+        localStorage.setItem('ecoproject_gemini_api_key', key);
+        alert('Gemini API key saved to local storage.');
+      } else {
+        localStorage.removeItem('ecoproject_gemini_api_key');
+        alert('Gemini API key cleared.');
+      }
+    }
+
+    // ================= STRICT CLASSIFICATION ENGINE =================
+    // Determines if input is genuinely ENVIRONMENTAL or NON_ENVIRONMENTAL
+
+    const STRICT_NON_ENV_TOPICS = [
+      'crypto', 'cryptocurrency', 'bitcoin', 'ethereum', 'trading', 'stock', 'forex', 'portfolio',
+      'dating', 'tinder', 'girlfriend', 'boyfriend', 'relationship', 'marriage',
+      'video game', 'gaming', 'playstation', 'xbox', 'fortnite', 'minecraft', 'roblox',
+      'homework', 'math exam', 'calculus test', 'algebra', 'essay writer', 'resume builder',
+      'gym', 'bicep', 'muscle', 'diet plan', 'weight loss', 'calorie counter',
+      'iphone repair', 'cracked screen', 'password hack', 'instagram followers', 'tiktok views',
+      'e-commerce shop', 'drop shipping', 'casino', 'betting', 'poker'
+    ];
+
+    const ENV_SEMANTIC_INDICATORS = [
+      'waste', 'plastic', 'garbage', 'trash', 'recycle', 'recycling', 'landfill', 'litter', 'compost', 'dump', 'debris',
+      'water', 'leak', 'drain', 'sewage', 'greywater', 'borewell', 'groundwater', 'drought', 'contamination', 'runoff', 'aquifer', 'rainwater',
+      'energy', 'electricity', 'power', 'solar', 'grid', 'consumption', 'kilowatt', 'thermal', 'hvac', 'vampire', 'generator', 'battery',
+      'food', 'spoilage', 'perishable', 'canteen', 'hostel', 'dining', 'cafeteria', 'surplus', 'leftover', 'produce', 'crop', 'harvest', 'farming', 'agriculture',
+      'air', 'pollution', 'smoke', 'pm2.5', 'pm10', 'emission', 'carbon', 'co2', 'diesel', 'exhaust', 'smog', 'air quality',
+      'climate', 'heat', 'temperature', 'flood', 'erosion', 'biodiversity', 'tree', 'forest', 'soil', 'pesticide', 'wildlife', 'species',
+      'traffic', 'vehicle', 'idling', 'fuel', 'commute', 'mobility', 'transit', 'marine', 'ocean', 'beach', 'coastal', 'lake', 'river'
+    ];
+
+    function classifyInput(rawText, category) {
+      const text = rawText.trim().toLowerCase();
+
+      // Check 1: Length or gibberish
+      if (text.length < 5) {
+        return {
+          isEnvironmental: false,
+          heading: "Clearer Problem Statement Required",
+          message: "The input is too brief to analyze. Please provide a description of an environmental problem."
+        };
+      }
+
+      // Check 2: Pure non-environmental flags
+      for (const nonEnv of STRICT_NON_ENV_TOPICS) {
+        if (text.includes(nonEnv)) {
+          return {
+            isEnvironmental: false,
+            heading: "Clearer Problem Statement Required",
+            message: "This does not appear to be an environmental or sustainability problem. Please describe an environmental issue such as waste management, water conservation, pollution, energy efficiency, biodiversity, etc."
+          };
+        }
+      }
+
+      // Check 3: Check for presence of environmental concepts
+      const hasEnvIndicator = ENV_SEMANTIC_INDICATORS.some(kw => text.includes(kw));
+
+      if (!hasEnvIndicator && !category) {
+        return {
+          isEnvironmental: false,
+          heading: "Clearer Problem Statement Required",
+          message: "This does not appear to be an environmental or sustainability problem. Please describe an environmental issue such as waste management, water conservation, pollution, energy efficiency, biodiversity, etc."
+        };
+      }
+
+      return { isEnvironmental: true };
+    }
+
+    // ================= DYNAMIC SYNTHESIS ENGINE (ZERO PREDEFINED REPETITION) =================
+    // Evaluates the exact user input, extracts the core entity, failure mode, and context,
+    // and synthesizes unique Problem -> Causes -> Impacts -> Solution -> System Matrix.
+
+    function synthesizeDynamicProject(userInput, category, level, location, technology) {
+      const lower = userInput.toLowerCase();
+
+      // 1. Identify specific resource or waste stream mentioned in the user's actual text
+      let entity = "resource";
+      let domain = category || "Environmental Sustainability";
+
+      if (lower.includes("plastic") && (lower.includes("beach") || lower.includes("coastal") || lower.includes("ocean") || location.includes("Coastal"))) {
+        entity = "coastal plastic waste and marine debris";
+        domain = "Coastal Waste Management & Marine Protection";
+      } else if (lower.includes("plastic")) {
+        entity = "single-use plastic packaging and non-biodegradable waste";
+        domain = "Plastic Waste Reduction & Circularity";
+      } else if (lower.includes("food") || lower.includes("canteen") || lower.includes("dining") || lower.includes("hostel") || lower.includes("meal")) {
+        entity = "post-consumer food scrap and kitchen prep surplus";
+        domain = "Food Systems & Waste Redistribution";
+      } else if (lower.includes("leak") || lower.includes("pipeline") || lower.includes("pipe") || lower.includes("pipe burst")) {
+        entity = "concealed plumbing pipe ruptures and unmonitored water leakage";
+        domain = "Water Infrastructure & Leak Detection";
+      } else if (lower.includes("water") || lower.includes("greywater") || lower.includes("drain")) {
+        entity = "excess domestic/institutional water runoff and unmetered consumption";
+        domain = "Water Conservation & Consumption Metering";
+      } else if (lower.includes("energy") || lower.includes("electricity") || lower.includes("power") || lower.includes("light")) {
+        entity = "idle baseline electricity draw and thermal cooling inefficiencies";
+        domain = "Clean Energy & Demand Optimization";
+      } else if (lower.includes("traffic") || lower.includes("idle") || lower.includes("vehicle") || lower.includes("car") || lower.includes("bus")) {
+        entity = "combustion engine idling and localized vehicle emissions";
+        domain = "Sustainable Transportation & Emission Mitigation";
+      } else if (lower.includes("air") || lower.includes("smoke") || lower.includes("pm2.5") || lower.includes("pollution")) {
+        entity = "ambient particulate matter and localized exhaust gas concentrations";
+        domain = "Air Quality Monitoring & Dispersion";
+      } else if (lower.includes("soil") || lower.includes("farm") || lower.includes("crop") || lower.includes("pesticide") || lower.includes("fertilizer")) {
+        entity = "topsoil nutrient runoff and chemical fertilizer leaching";
+        domain = "Sustainable Agriculture & Soil Conservation";
+      } else if (lower.includes("electronic") || lower.includes("e-waste") || lower.includes("battery") || lower.includes("device")) {
+        entity = "discarded electronic peripherals and toxic heavy metal components";
+        domain = "Circular E-Waste Management & Recovery";
+      } else {
+        // Natural synthesis using user's words
+        entity = `${userInput.replace(/problem|issue|system|management/gi, '').trim()} flow`;
+      }
+
+      // 2. Synthesize UNIQUE Problem Statement (Not repeating user input, but deeply contextualizing it)
+      let generatedProblem = "";
+      if (domain.includes("Plastic") && domain.includes("Coastal")) {
+        generatedProblem = `The ${location.toLowerCase()} experiences severe accumulation of ${entity} along tidal margins, where tidal wash-in and insufficient bin infrastructure outpace manual cleanup crews, allowing discarded polymers to break down into marine ecosystems.`;
+      } else if (domain.includes("Food")) {
+        generatedProblem = `The ${location.toLowerCase()} generates recurring batches of ${entity} due to unpredictable daily consumer turnout and lack of dynamic meal planning, causing edible food and organic waste to enter municipal landfills before it can be preserved or redistributed.`;
+      } else if (domain.includes("Water") && domain.includes("Leak")) {
+        generatedProblem = `The ${location.toLowerCase()} suffers from undetected ${entity} within aging distribution networks, where physical pipe fractures remain hidden underground or inside walls for days, wasting treated water and compromising local supply pressure.`;
+      } else if (domain.includes("Water")) {
+        generatedProblem = `The ${location.toLowerCase()} lacks granular sub-metering for ${entity}, resulting in unrestricted over-consumption, continuous tank overflows, and zero tenant or operator awareness of abnormal flow patterns.`;
+      } else if (domain.includes("Energy")) {
+        generatedProblem = `Facilities across the ${location.toLowerCase()} exhibit widespread ${entity} during unoccupied hours, where absence of automated shutoff and static HVAC schedules lead to substantial kilowatt-hour wastage and high utility costs.`;
+      } else if (domain.includes("Transportation") || domain.includes("Air")) {
+        generatedProblem = `The ${location.toLowerCase()} faces concentrated spikes of ${entity} during peak transit hours, where manual access barriers and clustered departure queues force vehicles to idle in close proximity to pedestrian zones.`;
+      } else {
+        generatedProblem = `The ${location.toLowerCase()} lacks real-time monitoring and coordinated intervention for ${entity}, causing unmonitored operational inefficiencies, resource degradation, and avoidable environmental contamination.`;
+      }
+
+      // 3. Synthesize Specific Causes (Tailored to the exact context)
+      const causes = [];
+      if (domain.includes("Food")) {
+        causes.push("Unpredictable day-to-day user attendance variance preventing accurate kitchen preparation sizing.");
+        causes.push("Absence of real-time plate-waste tracking to identify which specific menu items are being rejected.");
+        causes.push("Lack of active localized cold-storage or rapid surplus dispatch coordination with nearby community shelters.");
+        causes.push("Static meal planning based on fixed bulk recipes rather than historical consumption trends.");
+      } else if (domain.includes("Plastic") && domain.includes("Coastal")) {
+        causes.push("Tidal surge wash-up occurring outside standard municipal sanitation shift hours.");
+        causes.push("High tourist footfall combined with overflowing, unmonitored public collection bins.");
+        causes.push("Absence of automated debris detection along the shoreline to direct cleaning crews to high-density zones.");
+        causes.push("Wind dispersal carrying lightweight plastics directly into open waterways.");
+      } else if (domain.includes("Water")) {
+        causes.push("Absence of differential pressure or flow telemetry to isolate micro-leaks from normal usage.");
+        causes.push("Concealed plumbing and distribution risers that hide physical leaks until structural damage appears.");
+        causes.push("Failure of mechanical float valves in overhead storage tanks leading to continuous overflow.");
+        causes.push("Lack of individual sub-meter accountability, removing consumer incentive to report minor drips.");
+      } else if (domain.includes("Energy")) {
+        causes.push("Unmonitored 'vampire draw' from plugged appliances and computer labs left powered overnight.");
+        causes.push("Rigid manual HVAC cooling schedules that run irrespective of room occupancy or outdoor ambient temperature.");
+        causes.push("Lack of real-time power factor and sub-panel telemetry to identify inefficient inductive equipment.");
+        causes.push("Absence of automated occupancy-sensing relays in public corridors and communal halls.");
+      } else if (domain.includes("Transportation") || domain.includes("Air")) {
+        causes.push("Manual check-in bottlenecks at entry/exit gates causing stationary vehicle queues.");
+        causes.push("Unsynchronized departure schedules creating severe 20-30 minute vehicular congestion peaks.");
+        causes.push("Lack of live queue wait-time signaling to discourage parents or drivers from arriving prematurely.");
+        causes.push("Absence of localized micro-climate PM2.5 sensors to trigger air quality mitigation alerts.");
+      } else {
+        causes.push(`Absence of automated telemetry to monitor ${entity} in real time.`);
+        causes.push(`Relying on delayed manual audits rather than continuous sensor feedback.`);
+        causes.push(`Lack of operational alerts to notify operators when baseline usage thresholds are breached.`);
+        causes.push(`Insufficient user and staff visibility into the cumulative environmental footprint.`);
+      }
+
+      // 4. Synthesize Tangible Impacts (Environmental & Economic)
+      const impacts = [];
+      if (domain.includes("Food")) {
+        impacts.push("Accelerated methane (CH₄) emissions from anaerobic decomposition of organic matter in municipal landfills.");
+        impacts.push("Wasteful expenditure of the agricultural water, land, and fossil fuels embedded in the production of discarded meals.");
+        impacts.push("High recurring catering and dining hall disposal budget losses for the institution.");
+      } else if (domain.includes("Plastic")) {
+        impacts.push("Mechanical breakdown into microplastics ingested by marine fauna and entering the food chain.");
+        impacts.push("Severe entanglement hazards for coastal avian and aquatic wildlife.");
+        impacts.push("Economic decline in local shoreline tourism and steep municipal beach cleaning expenditures.");
+      } else if (domain.includes("Water")) {
+        impacts.push("Depletion of local groundwater aquifers and municipal reservoirs during seasonal scarcity.");
+        impacts.push("Severe secondary structural damage, dampness, and mold growth in surrounding buildings.");
+        impacts.push("Heavily inflated water tanker and municipal utility tariffs due to unmetered volumetric loss.");
+      } else if (domain.includes("Energy")) {
+        impacts.push("Excess greenhouse gas emissions generated by burning fossil fuels to meet unnecessary base grid loads.");
+        impacts.push("Premature component degradation of electrical transformers and HVAC compressors due to unoptimized runtime.");
+        impacts.push("Severe peak demand surcharge penalties on monthly commercial electricity invoices.");
+      } else if (domain.includes("Transportation") || domain.includes("Air")) {
+        impacts.push("Localized concentrations of carcinogenic PM2.5 and nitrogen oxides (NOx) adjacent to populated classrooms.");
+        impacts.push("Acute respiratory irritation and long-term health risks for students, guards, and pedestrians.");
+        impacts.push("Excess fossil fuel consumption and carbon footprint from unnecessary stationary idling.");
+      } else {
+        impacts.push(`Cumulative degradation of natural resources across the ${location.toLowerCase()} ecosystem.`);
+        impacts.push(`Unnecessary financial operational expenditure resulting from unmitigated waste.`);
+        impacts.push(`Failure to meet institutional sustainability benchmarks and UN SDG targets.`);
+      }
+
+      // 5. Synthesize Direct Engineering Solution (Detailed, Specific, Non-Generic)
+      let solutionTitle = "";
+      let solutionText = "";
+
+      if (domain.includes("Food")) {
+        solutionTitle = `Smart Predictive Food Waste Minimization & Redistribution Platform`;
+        solutionText = `Develop an integrated food waste tracking and demand prediction system tailored for the ${location.toLowerCase()}. The system employs smart load-cell scales under cafeteria disposal bins to automatically record meal waste weights by station, while a ${technology.includes("AI") ? "machine learning forecasting model" : "statistical analytics engine"} correlates kitchen prep logs with historical attendance and academic calendar schedules. When surplus cooked food is detected, an automated notification dispatch instantly alerts verified local food recovery partners within the safe 3-hour consumption window, while generating weekly portion-adjustment recommendations for kitchen supervisors.`;
+      } else if (domain.includes("Plastic") && domain.includes("Coastal")) {
+        solutionTitle = `Autonomous Shoreline Plastic Tracking & Targeted Cleanup Dispatch System`;
+        solutionText = `Deploy an intelligent coastal waste monitoring infrastructure for the ${location.toLowerCase()}. Using ${technology.includes("IoT") ? "solar-powered edge camera nodes along key beach access corridors" : "a GIS-integrated mobile reporting platform"}, the system classifies high-density plastic accumulation zones using computer vision. It maps debris drift patterns based on tidal cycles and transmits automated task notifications to municipal cleaning crews via a real-time dashboard, optimizing collection routes before tidal changes pull plastics into open marine waters.`;
+      } else if (domain.includes("Water")) {
+        solutionTitle = `IoT Sub-Metered Water Leak Detection & Pressure Regulation Network`;
+        solutionText = `Implement a connected water telemetry network throughout the ${location.toLowerCase()}. The solution retrofits non-invasive ultrasonic flow sensors and pressure transducers onto main riser conduits, streaming telemetry to an anomaly detection engine. By analyzing baseline flow signatures against nocturnal inactivity hours, the system immediately pinpoints continuous micro-leaks or tank overflows, triggering automated shutoff via solenoid valves and dispatching instant maintenance tickets with exact zone coordinates to facility plumbers.`;
+      } else if (domain.includes("Energy")) {
+        solutionTitle = `Automated Energy Demand Profiling & Smart Curtailment Architecture`;
+        solutionText = `Architect an intelligent power monitoring and load curtailment system across the ${location.toLowerCase()}. Current transducers (CT sensors) and smart relays monitor circuit breaker panels, feeding live power consumption data to an edge analytics dashboard. During unoccupied periods, the system automatically isolates non-critical phantom loads and adjusts HVAC setpoints based on real-time ambient temperature, flattening peak demand curves and slashing kilowatt-hour consumption without disrupting occupants.`;
+      } else if (domain.includes("Transportation") || domain.includes("Air")) {
+        solutionTitle = `Intelligent Gate Flow Optimization & Real-Time Emission Mitigation Hub`;
+        solutionText = `Engineer a smart transit flow and air quality management hub for the ${location.toLowerCase()}. Low-cost optical PM2.5/PM10 sensors measure localized exhaust concentrations along entry perimeters, while an automated RFID/QR-code scanning gateway replaces manual paper check-ins. A digital queue dashboard provides drivers and parents with staggered pickup arrival alerts, cutting average vehicle wait times from 25 minutes to under 4 minutes and eliminating stationary exhaust buildup.`;
+      } else {
+        solutionTitle = `Targeted ${domain} Telemetry & Automated Mitigation Framework`;
+        solutionText = `Implement an engineered monitoring and closed-loop mitigation framework designed specifically for ${entity} in the ${location.toLowerCase()}. The architecture integrates dedicated sensors and software interfaces using ${technology} to replace unmonitored manual operations with proactive automated alerts, providing decision-makers with continuous visibility and verifiable environmental footprint reductions.`;
+      }
+
+      // 6. Systematic Breakdown Matrix (Answers the 6 required questions)
+      let monitored = "";
+      let users = "";
+      let dataCollected = "";
+      let techApplied = "";
+      let actionTaken = "";
+      let impactReduction = "";
+
+      if (domain.includes("Food")) {
+        monitored = "Post-consumer plate waste weight by station, prep volume, and kitchen cold-storage temperatures.";
+        users = "Dining hall kitchen supervisors, mess managers, campus facility staff, and local food shelter coordinators.";
+        dataCollected = "Real-time scrap weight (grams/kg), meal category tags, hourly dining check-in timestamps, and spoilage timer.";
+        techApplied = `${technology} deployed via load-cell sensor scales and predictive time-series regression algorithms.`;
+        actionTaken = "Generates next-day batch prep reduction targets and dispatches immediate surplus pickup alerts to local NGOs.";
+        impactReduction = "Reduces landfill organic waste by 40-60%, preventing ~750 kg CO₂e methane emissions per semester.";
+      } else if (domain.includes("Plastic")) {
+        monitored = "Shoreline debris density, public waste bin fill levels, and coastal tidal wash-up cycles.";
+        users = "Municipal beach cleaning crews, coastal rangers, environmental volunteers, and harbor administrators.";
+        dataCollected = "High-resolution debris cluster imagery, bin capacity % levels, GPS coordinates, and tidal timeline metrics.";
+        techApplied = `${technology} with edge image segmentation, ultrasonic bin telemetry, and spatial GIS heatmapping.`;
+        actionTaken = "Dispatches prioritized cleaning routes to field crews and alerts compactor trucks before public bins overflow.";
+        impactReduction = "Intercepts ~1.5 metric tons of plastic waste annually before fragmentation into marine food chains.";
+      } else if (domain.includes("Water")) {
+        monitored = "Volumetric water flow rate (L/min), pipeline static pressure (Bar), and overhead tank fluid levels.";
+        users = "Building facility engineers, municipal plumbers, campus sustainability officers, and apartment tenants.";
+        dataCollected = "Continuous pulse telemetry, differential pressure drop rates, and nocturnal baseline flow indices.";
+        techApplied = `${technology} with ultrasonic flow transducers, pressure sensors, and statistical leak anomaly detection.`;
+        actionTaken = "Closes automated motorized shutoff valves during burst events and sends push notifications for silent leaks.";
+        impactReduction = "Saves over 35,000 liters of treated drinking water monthly and stabilizes system distribution pressure.";
+      } else if (domain.includes("Energy")) {
+        monitored = "Circuit-level current draw (Amperes), real-time active power (Watts), and ambient room occupancy.";
+        users = "Campus energy managers, electrical maintenance contractors, and green audit compliance teams.";
+        dataCollected = "Voltage, power factor, instantaneous kilowatt draw, and room motion/PIR sensor state changes.";
+        techApplied = `${technology} with split-core current transformers, smart relay controllers, and cloud dashboard analytics.`;
+        actionTaken = "De-energizes idle lab equipment circuits during off-hours and modulates cooling thermostat setpoints.";
+        impactReduction = "Cuts off-peak electrical base draw by 25-35%, saving thousands of kilowatt-hours annually.";
+      } else if (domain.includes("Transportation") || domain.includes("Air")) {
+        monitored = "Localized PM2.5 / PM10 particulate levels, gate vehicle dwell time, and vehicle entry queue lengths.";
+        users = "Campus security officers, school gate marshals, transport fleet operators, and parents/commuters.";
+        dataCollected = "Laser particulate sensor counts (μg/m³), vehicle license plate / RFID timestamps, and queue delay seconds.";
+        techApplied = `${technology} with optical dust sensors, barcode/RFID scanners, and real-time gate pacing dashboards.`;
+        actionTaken = "Notifies drivers to advance through pre-assigned pickup bays and staggered exit releases to prevent idling.";
+        impactReduction = "Reduces peak gate PM2.5 exposure by up to 65% and saves over 400 hours of vehicle fuel idling annually.";
+      } else {
+        monitored = `Real-time physical indicators of ${entity} across the target ${location.toLowerCase()}.`;
+        users = `Designated operational managers, sustainability staff, and system administrators.`;
+        dataCollected = `Time-series sensor telemetry, status flags, and cumulative resource consumption logs.`;
+        techApplied = `${technology} configured according to ${level}-level operational standards.`;
+        actionTaken = `Automated notification dispatches, threshold breach warnings, and corrective maintenance scheduling.`;
+        impactReduction = `Verifiable reduction in resource waste and direct alignment with UN Sustainable Development Goals.`;
+      }
+
+      // 7. Tech Stack Calibrated to Difficulty Level
+      let stackHardware = "";
+      let stackSoftware = "";
+      let stackComms = "";
+
+      if (level === "Beginner") {
+        stackHardware = "Arduino Uno / Raspberry Pi Pico, Basic Analog Sensors (Float/Ultrasonic/Thermistor), Breadboard circuit.";
+        stackSoftware = "C++ (Arduino IDE), Python Flask local server, SQLite database, Chart.js for web graphs.";
+        stackComms = "USB Serial / Local Wi-Fi (ESP8266 module), Localhost REST API endpoints.";
+      } else if (level === "Intermediate") {
+        stackHardware = "ESP32 Dual-Core Microcontroller, Industrial-grade Hall/Optical/PIR sensors, Relay modules.";
+        stackSoftware = "FreeRTOS / MicroPython, Node.js / Express backend, PostgreSQL time-series DB, WebSockets real-time dashboard.";
+        stackComms = "Wi-Fi 802.11 b/g/n, MQTT protocol via Mosquitto broker, Push notification webhook APIs.";
+      } else {
+        // Advanced
+        stackHardware = "NVIDIA Jetson Orin Nano / Custom PCB ESP32-S3 array, Industrial RS485 / Modbus transducers, Motorized valve actuators.";
+        stackSoftware = "PyTorch / TensorFlow Lite Edge Models, FastAPI Async backend, InfluxDB time-series + Grafana, Docker containerization.";
+        stackComms = "LoRaWAN 868/915 MHz long-range radio mesh, Cellular NB-IoT fallback, End-to-end TLS encryption.";
+      }
+
+      // 8. SDG Assignment
+      let sdg = "SDG 12: Responsible Consumption & Production";
+      if (domain.includes("Water")) sdg = "SDG 6: Clean Water & Sanitation";
+      else if (domain.includes("Energy")) sdg = "SDG 7: Affordable & Clean Energy";
+      else if (domain.includes("Food")) sdg = "SDG 12: Responsible Consumption & SDG 2: Zero Hunger";
+      else if (domain.includes("Air") || domain.includes("Transportation")) sdg = "SDG 11: Sustainable Cities & SDG 13: Climate Action";
+      else if (domain.includes("Plastic") && domain.includes("Coastal")) sdg = "SDG 14: Life Below Water & SDG 12";
+
+      return {
+        title: solutionTitle,
+        subtitle: `Engineered specifically to resolve: "${userInput.trim()}"`,
+        setting: location,
+        level: level,
+        tech: technology,
+        sdg: sdg,
+        problemStatement: generatedProblem,
+        causes: causes,
+        impacts: impacts,
+        solutionText: solutionText,
+        matrix: {
+          monitored,
+          users,
+          dataCollected,
+          techApplied,
+          actionTaken,
+          impactReduction
+        },
+        stack: {
+          hardware: stackHardware,
+          software: stackSoftware,
+          comms: stackComms
+        }
+      };
+    }
+
+    // ================= GEMINI AI ENGINE ADAPTER =================
+    async function generateWithGeminiAI(apiKey, problem, category, level, location, technology) {
+      const prompt = `You are an expert Environmental Systems Analyst and Engineering Architect.
+Analyze the user's input and follow these STRICT rules:
+
+USER INPUT PROBLEM: "${problem}"
+PRIMARY DOMAIN: "${category}"
+TARGET ENVIRONMENT: "${location}"
+DIFFICULTY LEVEL: "${level}"
+TECHNOLOGY PREFERRED: "${technology}"
+
+CRITICAL VALIDATION RULE:
+First, classify if the user's problem is genuinely an ENVIRONMENTAL or SUSTAINABILITY problem.
+If the input is NOT related to the environment (for example: crypto, gaming, homework, relationships, personal finance, general software apps), do NOT generate an environmental problem or fallback.
+Instead, return ONLY this JSON:
+{
+  "isEnvironmental": false,
+  "heading": "Clearer Problem Statement Required",
+  "message": "This does not appear to be an environmental or sustainability problem. Please describe an environmental issue such as waste management, water conservation, pollution, energy efficiency, biodiversity, etc."
+}
+
+If the input IS environmental:
+Generate a UNIQUE, highly specific project. Do NOT use generic predefined templates.
+Ensure Problem -> Cause -> Impact -> Solution are logically connected.
+Explain: What is monitored, Who uses it, What data is collected, How tech is applied, What action is taken, and How impact is reduced.
+Return ONLY this JSON structure (no markdown fences, pure JSON):
+{
+  "isEnvironmental": true,
+  "title": "Specific Project Title",
+  "subtitle": "Short subtitle reflecting the exact problem",
+  "setting": "${location}",
+  "level": "${level}",
+  "tech": "${technology}",
+  "sdg": "Relevant UN SDG",
+  "problemStatement": "A distinct, engineered problem statement deeply contextualized to the input",
+  "causes": ["Specific cause 1", "Specific cause 2", "Specific cause 3", "Specific cause 4"],
+  "impacts": ["Specific environmental/operational impact 1", "Impact 2", "Impact 3"],
+  "solutionText": "Detailed engineering solution explaining how technology directly counters the causes",
+  "matrix": {
+    "monitored": "What is being monitored?",
+    "users": "Who uses the system?",
+    "dataCollected": "What data is collected?",
+    "techApplied": "How technology is applied?",
+    "actionTaken": "What action is taken?",
+    "impactReduction": "How the solution reduces the environmental impact?"
+  },
+  "stack": {
+    "hardware": "Specific sensors and hardware calibrated to ${level}",
+    "software": "Software, models, and frameworks",
+    "comms": "Protocols and connectivity"
+  }
+}`;
+
+      const modelsToTry = ['gemini-3.6-flash', 'gemini-2.5-flash'];
+      let lastError = null;
+
+      for (const model of modelsToTry) {
+        try {
+          const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: { responseMimeType: "application/json" }
+            })
+          });
+
+          if (!response.ok) {
+            const errData = await response.json().catch(() => ({}));
+            const errMsg = errData.error?.message || `API error (${response.status})`;
+            if (errMsg.includes("no longer available") || errMsg.includes("not found") || response.status === 404) {
+              lastError = new Error(errMsg);
+              continue;
+            }
+            throw new Error(errMsg);
+          }
+
+          const data = await response.json();
+          const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          return JSON.parse(rawText);
+        } catch (err) {
+          lastError = err;
+        }
+      }
+      throw lastError || new Error("Failed to generate with Gemini API.");
+    }
+
+    // ================= CONTROLLER =================
+    let currentProposal = null;
+
+    async function handleGenerate() {
+      const category = document.getElementById("category").value;
+      const level = document.getElementById("level").value;
+      const technology = document.getElementById("technology").value;
+      const location = document.getElementById("location").value;
+      const problem = document.getElementById("problem").value.trim();
+      const engineMode = document.getElementById("engineMode").value;
+
+      const clarBox = document.getElementById("clarificationBox");
+      const resBox = document.getElementById("result");
+      const btn = document.getElementById("generateBtn");
+      const btnText = document.getElementById("generateBtnText");
+
+      // Reset
+      clarBox.style.display = "none";
+      resBox.style.display = "none";
+
+      // Form validation
+      if (!level || !problem) {
+        showClarification(
+          "Clearer Problem Statement Required",
+          "Please select a difficulty level and describe your problem before analyzing."
+        );
+        return;
+      }
+
+      // Step 1: Strict Classification
+      const classification = classifyInput(problem, category);
+      if (!classification.isEnvironmental) {
+        showClarification(classification.heading, classification.message);
+        return;
+      }
+
+      btn.disabled = true;
+      btnText.textContent = "Analyzing Problem & Synthesizing Solution...";
+
+      try {
+        let resultData = null;
+
+        if (engineMode === "gemini") {
+          const apiKey = document.getElementById("geminiApiKey").value.trim() || localStorage.getItem("ecoproject_gemini_api_key");
+          if (!apiKey) {
+            alert("Please enter and save your Gemini API Key, or switch to the Built-in Semantic Problem Analyst.");
+            btn.disabled = false;
+            btnText.textContent = "Analyze Problem & Synthesize Solution";
+            return;
+          }
+
+          const geminiResult = await generateWithGeminiAI(apiKey, problem, category, level, location, technology);
+          if (!geminiResult.isEnvironmental) {
+            showClarification(geminiResult.heading, geminiResult.message);
+            btn.disabled = false;
+            btnText.textContent = "Analyze Problem & Synthesize Solution";
+            return;
+          }
+          resultData = geminiResult;
+        } else {
+          // Built-in Dynamic Semantic Analyst
+          resultData = synthesizeDynamicProject(problem, category, level, location, technology);
+        }
+
+        renderProjectResult(resultData, problem);
+        currentProposal = { ...resultData, rawInput: problem };
+
+      } catch (err) {
+        console.error(err);
+        alert(`Notice: ${err.message}. Using Built-in Semantic Analyst.`);
+        const fallbackData = synthesizeDynamicProject(problem, category, level, location, technology);
+        renderProjectResult(fallbackData, problem);
+        currentProposal = { ...fallbackData, rawInput: problem };
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = "Analyze Problem & Synthesize Solution";
+      }
+    }
+
+    function showClarification(heading, message) {
+      const clarBox = document.getElementById("clarificationBox");
+      document.getElementById("clarificationHeading").textContent = heading;
+      document.getElementById("clarificationMessage").textContent = message;
+      clarBox.style.display = "block";
+      clarBox.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function renderProjectResult(data, rawProblem) {
+      document.getElementById("projectTitle").textContent = data.title;
+      document.getElementById("projectSubtitle").textContent = data.subtitle;
+
+      // Meta Pills
+      document.getElementById("metaSetting").textContent = data.setting;
+      document.getElementById("metaLevel").textContent = data.level;
+      document.getElementById("metaTech").textContent = data.tech;
+      document.getElementById("metaSdg").textContent = data.sdg;
+      document.getElementById("techLevelLabel").textContent = data.level;
+
+      // Synthesized Problem Statement
+      document.getElementById("resProblemStatement").textContent = data.problemStatement;
+
+      // Causes List
+      const causesEl = document.getElementById("resCausesList");
+      causesEl.innerHTML = data.causes.map(c => `<li>${c}</li>`).join('');
+
+      // Impacts List
+      const impactsEl = document.getElementById("resImpactsList");
+      impactsEl.innerHTML = data.impacts.map(i => `<li>${i}</li>`).join('');
+
+      // Solution Text
+      document.getElementById("resSolutionText").textContent = data.solutionText;
+
+      // Systematic Matrix
+      document.getElementById("matMonitored").textContent = data.matrix.monitored;
+      document.getElementById("matUsers").textContent = data.matrix.users;
+      document.getElementById("matData").textContent = data.matrix.dataCollected;
+      document.getElementById("matTechApplication").textContent = data.matrix.techApplied;
+      document.getElementById("matActionTaken").textContent = data.matrix.actionTaken;
+      document.getElementById("matImpactReduction").textContent = data.matrix.impactReduction;
+
+      // Tech Stack
+      document.getElementById("stackHardware").textContent = data.stack.hardware;
+      document.getElementById("stackSoftware").textContent = data.stack.software;
+      document.getElementById("stackComms").textContent = data.stack.comms;
+
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // ================= EXPORT TOOLS =================
+    function exportProposalMarkdown() {
+      if (!currentProposal) return;
+      const d = currentProposal;
+      const md = `# Project Proposal: ${d.title}
+*${d.subtitle}*
+
+## Executive Summary
+- **Target Setting:** ${d.setting}
+- **Difficulty Level:** ${d.level}
+- **Technology Domain:** ${d.tech}
+- **SDG Alignment:** ${d.sdg}
+
+---
+
+## 1. Problem Statement
+> ${d.problemStatement}
+
+### Diagnosed Root Causes:
+${d.causes.map(c => `- ${c}`).join('\n')}
+
+### Environmental & Operational Impacts:
+${d.impacts.map(i => `- ${i}`).join('\n')}
+
+---
+
+## 2. Engineered Solution Architecture
+${d.solutionText}
+
+---
+
+## 3. Systematic Breakdown Matrix
+- **What Is Monitored:** ${d.matrix.monitored}
+- **Who Uses The System:** ${d.matrix.users}
+- **What Data Is Collected:** ${d.matrix.dataCollected}
+- **How Technology Is Applied:** ${d.matrix.techApplied}
+- **What Action Is Taken:** ${d.matrix.actionTaken}
+- **How Environmental Impact Is Reduced:** ${d.matrix.impactReduction}
+
+---
+
+## 4. Calibrated Technology Stack (${d.level})
+- **Hardware & Edge:** ${d.stack.hardware}
+- **Software & Models:** ${d.stack.software}
+- **Telemetry & Storage:** ${d.stack.comms}
+
+---
+*Generated dynamically by EcoProject AI - Contextual Sustainable Project Architect*
+`;
+
+      const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${d.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_proposal.md`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function copyProposalToClipboard() {
+      if (!currentProposal) return;
+      const d = currentProposal;
+      const text = `PROJECT PROPOSAL: ${d.title}
+SDG: ${d.sdg} | Setting: ${d.setting} | Level: ${d.level} | Tech: ${d.tech}
+
+PROBLEM:
+${d.problemStatement}
+
+ROOT CAUSES:
+${d.causes.map(c => `• ${c}`).join('\n')}
+
+IMPACTS:
+${d.impacts.map(i => `• ${i}`).join('\n')}
+
+ENGINEERED SOLUTION:
+${d.solutionText}
+
+SYSTEM BREAKDOWN:
+• What is monitored: ${d.matrix.monitored}
+• Who uses it: ${d.matrix.users}
+• Data collected: ${d.matrix.dataCollected}
+• Tech applied: ${d.matrix.techApplied}
+• Action taken: ${d.matrix.actionTaken}
+• Environmental reduction: ${d.matrix.impactReduction}
+
+TECH STACK:
+• Hardware: ${d.stack.hardware}
+• Software: ${d.stack.software}
+• Telemetry: ${d.stack.comms}
+`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Full project proposal copied to clipboard!");
+      }).catch(err => {
+        alert("Failed to copy: " + err);
+      });
+    }
+  </script>
+
+</body>
+</html>

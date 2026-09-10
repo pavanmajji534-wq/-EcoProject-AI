@@ -1,0 +1,65 @@
+================================================================================
+🌱 ECOPROJECT AI - GITHUB REPOSITORY DETAILS & SETUP GUIDE
+================================================================================
+
+--------------------------------------------------------------------------------
+1. GITHUB REPOSITORY "ABOUT" / SHORT DESCRIPTION
+--------------------------------------------------------------------------------
+(Copy and paste this into the "About" section on your GitHub repository page):
+
+An AI-powered environmental project architect that dynamically diagnoses sustainability problems and engineers custom, cause-and-effect solutions aligned with UN SDGs.
+
+
+--------------------------------------------------------------------------------
+2. GITHUB REPOSITORY TOPICS / TAGS
+--------------------------------------------------------------------------------
+(Copy and paste these into the "Topics" box on GitHub):
+
+sustainability, ai, environmental-engineering, gemini-api, un-sdgs, green-tech, iot, waste-management, climate-action, hackathon-project
+
+
+--------------------------------------------------------------------------------
+3. HOW TO UPLOAD FILES TO GITHUB (STEP-BY-STEP)
+--------------------------------------------------------------------------------
+1. Open your repository on https://github.com
+2. Click the button near the top right of the file list:
+      [ Add file ▾ ]  -->  select "Upload files"
+3. Drag and drop the following files into the upload box on GitHub:
+      - index.html   (Your main website file)
+      - README.md    (Your repository documentation)
+4. Scroll to the bottom and click the green "Commit changes" button.
+
+
+--------------------------------------------------------------------------------
+4. HOW TO GET YOUR LIVE PUBLIC LINK (GITHUB PAGES)
+--------------------------------------------------------------------------------
+1. In your GitHub repository, click the "Settings" tab (gear icon at the top).
+2. In the left sidebar, click on "Pages" (under Code and automation).
+3. Under "Build and deployment":
+      - Source: Deploy from a branch
+      - Branch: Select "main" (or "master") and folder "/ (root)"
+      - Click "Save".
+4. Wait 1 to 2 minutes, then refresh the page.
+5. Your live website URL will appear in a green banner:
+      https://<your-username>.github.io/<your-repo-name>/
+
+
+--------------------------------------------------------------------------------
+5. QUICK TEST STATEMENTS FOR YOUR GENERATOR
+--------------------------------------------------------------------------------
+- Test 1 (Non-environmental - should be rejected with clarification):
+  "I need an app to track my crypto portfolio and give me stock trading signals."
+
+- Test 2 (Coastal Plastic Waste):
+  "Plastic waste near beaches"
+
+- Test 3 (Food Waste):
+  "Food waste in college canteens"
+
+- Test 4 (Water Leakage):
+  "Water wastage in apartments"
+
+================================================================================
+All files are saved at:
+C:\Users\majji pavan\.gemini\antigravity\scratch\ecoproject-ai
+================================================================================
